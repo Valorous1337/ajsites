@@ -31,11 +31,18 @@ const AboutContent = styled(motion.div)`
 const AboutTitle = styled.h2`
   font-size: 2.5rem;
   font-weight: 700;
-  background: linear-gradient(to right, #10b981, #3b82f6);
+  background: linear-gradient(45deg, #10b981, #3b82f6, #059669, #2563eb);
+  background-size: 400% 400%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   margin-bottom: 1.5rem;
+  animation: gradientBreathe 8s ease infinite;
+  @keyframes gradientBreathe {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
 `;
 
 const AboutText = styled.p`
@@ -77,7 +84,7 @@ const About = () => {
           </AboutButton>
         </AboutContent>
         <AboutImage
-          src="https://images.unsplash.com/photo-1680783954745-3249be59e527?q=80&w=928&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+          src="https://images.unsplash.com/photo-1680783954745-3249be59e527?q=80&w=928&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&h=500&q=80"
           alt="AI Technology"
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}

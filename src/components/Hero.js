@@ -8,6 +8,14 @@ const HeroStyled = styled.section`
   align-items: center;
   position: relative;
   overflow: hidden;
+  background: linear-gradient(45deg, #10b981, #3b82f6, #059669, #2563eb);
+  background-size: 400% 400%;
+  animation: gradientBreathe 8s ease infinite;
+  @keyframes gradientBreathe {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
 `;
 
 const HeroImage = styled(motion.img)`
@@ -16,7 +24,13 @@ const HeroImage = styled(motion.img)`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.3;
+  opacity: 0.2;
+  animation: fadeBreathe 8s ease infinite;
+  @keyframes fadeBreathe {
+    0% { opacity: 0.2; }
+    50% { opacity: 0.3; }
+    100% { opacity: 0.2; }
+  }
 `;
 
 const HeroContent = styled.div`
@@ -31,13 +45,20 @@ const HeroContent = styled.div`
 const HeroTitle = styled(motion.h2)`
   font-size: 3rem;
   font-weight: 700;
-  background: linear-gradient(to right, #10b981, #3b82f6);
+  background: linear-gradient(45deg, #10b981, #3b82f6, #059669, #2563eb);
+  background-size: 400% 400%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   margin-bottom: 1.5rem;
+  animation: gradientBreathe 8s ease infinite;
   @media (min-width: 768px) {
     font-size: 4.5rem;
+  }
+  @keyframes gradientBreathe {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
 `;
 

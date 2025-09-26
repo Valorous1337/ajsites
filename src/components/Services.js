@@ -18,10 +18,17 @@ const ServicesTitle = styled(motion.h2)`
   font-weight: 700;
   text-align: center;
   margin-bottom: 3rem;
-  background: linear-gradient(to right, #10b981, #3b82f6);
+  background: linear-gradient(45deg, #10b981, #3b82f6, #059669, #2563eb);
+  background-size: 400% 400%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  animation: gradientBreathe 8s ease infinite;
+  @keyframes gradientBreathe {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
 `;
 
 const ServicesGrid = styled.div`
@@ -71,8 +78,8 @@ const Services = () => {
       image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
     },
     {
-      title: 'eCommerce Solutions',
-      description: 'Scalable, secure online stores with no recurring fees. AI-driven builds ensure fast delivery for Somerset businesses, from startups to enterprises.',
+      title: 'Website Redesigns',
+      description: 'Scalable, secure online websites. AI-driven builds ensure fast delivery for Somerset businesses, time to give your business a refreshed new look?',
       image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
     },
   ];
