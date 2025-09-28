@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Services from './components/Services';
+import BitcoinPayments from './components/BitcoinPayments';
 import About from './components/About';
 import Growth from './components/Growth';
 import CTA from './components/CTA';
@@ -24,10 +25,11 @@ const AppContainer = styled.div`
 
 function App() {
   return (
-    <AppContainer>
+    <AppContainer id="top">
       <Header />
       <Hero />
       <Services />
+      <BitcoinPayments walletAddress="seventyvek42@walletofsatoshi.com" /> {/* Updated with your Wallet of Satoshi address */}
       <About />
       <Growth />
       <CTA />
