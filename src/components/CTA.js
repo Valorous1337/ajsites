@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 const CTAStyled = styled.section`
   padding: 5rem 0;
@@ -44,7 +45,7 @@ const CTAText = styled(motion.p)`
   margin: 0 auto 2rem;
 `;
 
-const CTAForm = styled(motion.div)`
+const CTAForm = styled(motion.form)`
   max-width: 28rem;
   margin: 0 auto;
   display: flex;
@@ -92,12 +93,60 @@ const CTAButton = styled.button`
   &:hover {
     background: #e5e7eb;
   }
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+`;
+
+const Message = styled.p`
+  margin-top: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  ${props => props.success && 'background: #10b981; color: white;'}
+  ${props => props.error && 'background: #ef4444; color: white;'}
 `;
 
 const CTA = () => {
-  const handleSubmit = (e) => {
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [status, setStatus] = useState(''); // 'success', 'error', or ''
+  const { executeRecaptcha } = useGoogleReCaptcha();
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert('Form submitted! We’ll get back to you soon.');
+    setStatus(''); // Reset status
+
+    if (!executeRecaptcha) {
+      setStatus('error');
+      return;
+    }
+
+    // Generate reCAPTCHA token
+    const recaptchaToken = await executeRecaptcha('submit');
+
+    try {
+      const response = await fetch('/api/submit-form', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...formData, recaptchaToken }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setStatus('error');
+      }
+    } catch (error) {
+      setStatus('error');
+    }
   };
 
   return (
@@ -109,11 +158,14 @@ const CTA = () => {
         <CTAText initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.2 }} viewport={{ once: true }}>
           Contact us to start your AI-powered web journey and grow your Somerset business.
         </CTAText>
-        <CTAForm initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }} viewport={{ once: true }}>
-          <Input type="text" placeholder="Your Name" required />
-          <Input type="email" placeholder="Your Email" required />
-          <Textarea placeholder="Tell us about your project" rows="4" required />
-          <CTAButton onClick={handleSubmit}>Get Started</CTAButton>
+        <CTAForm onSubmit={handleSubmit} initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }} viewport={{ once: true }}>
+          <Input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleChange} required />
+          <Input type="email" name="email" placeholder="Your Email" value={formData.email} onChange={handleChange} required />
+          <Textarea name="message" placeholder="Tell us about your project" rows="4" value={formData.message} onChange={handleChange} required />
+          <CTAButton type="submit">Get Started</CTAButton>
+          {status && <Message success={status === 'success'} error={status === 'error'}>
+            {status === 'success' ? 'Thanks! We\'ll be in touch soon.' : 'Something went wrong. Please try again.'}
+          </Message>}
         </CTAForm>
       </Container>
     </CTAStyled>

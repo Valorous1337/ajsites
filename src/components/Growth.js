@@ -74,9 +74,9 @@ const GrowthButton = styled(motion.a)`
 
 const Growth = () => {
   const testimonials = [
-    { text: 'AJSites transformed our online presence with a sleek, AI-optimized site that ranks high on Google.', author: 'Jane, Taunton Retail' },
-    { text: 'Their AI tools cut our web development costs in half while boosting leads.', author: 'Mark, Somerset Crafts' },
-    { text: 'Fast, professional, and tailored for small businesses like ours.', author: 'Sarah, Bridgwater Services' },
+    { text: 'AJSites transformed our online presence with a sleek, AI-optimized site that ranks high on Google.', author: 'Jane, Taunton' },
+    { text: 'Their AI tools cut our web development costs in half while boosting leads.', author: 'Mark, Yeovil' },
+    { text: 'Fast, professional, and tailored for small businesses like ours. Super quick from start to finish.', author: 'Sarah, Bridgwater' },
   ];
 
   return (

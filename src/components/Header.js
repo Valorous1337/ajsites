@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import { motion } from 'framer-motion';
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+    padding: 0;
+  }
+`;
 
 const HeaderStyled = styled(motion.header)`
   position: fixed;
@@ -125,49 +132,52 @@ const Header = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <HeaderStyled initial={{ y: -100 }} animate={{ y: 0 }} transition={{ duration: 0.8, ease: 'easeOut' }}>
-      <Container>
-        <motion.a href="#top" style={{ textDecoration: 'none' }}>
-          <Logo initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3, duration: 0.8 }} whileHover={{ scale: 1.1 }}>
-            AJSites
-          </Logo>
-        </motion.a>
-        <Nav>
-          {['Services', 'About', 'Growth', 'Contact'].map((item, index) => (
-            <NavLink
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 + index * 0.1, duration: 0.5 }}
-              whileHover={{ scale: 1.1 }}
-            >
-              {item}
-            </NavLink>
-          ))}
-        </Nav>
-        <Burger onClick={toggleMenu}>
-          <BurgerLine isOpen={isOpen} />
-          <BurgerLine isOpen={isOpen} />
-          <BurgerLine isOpen={isOpen} />
-        </Burger>
-        <MobileMenu isOpen={isOpen} initial={{ opacity: 0 }} animate={{ opacity: isOpen ? 1 : 0 }} transition={{ duration: 0.3 }}>
-          {['Services', 'About', 'Growth', 'Contact'].map((item, index) => (
-            <MobileNavLink
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              onClick={toggleMenu}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 * index, duration: 0.5 }}
-              whileHover={{ scale: 1.1 }}
-            >
-              {item}
-            </MobileNavLink>
-          ))}
-        </MobileMenu>
-      </Container>
-    </HeaderStyled>
+    <>
+      <GlobalStyle />
+      <HeaderStyled initial={{ y: -100 }} animate={{ y: 0 }} transition={{ duration: 0.8, ease: 'easeOut' }}>
+        <Container>
+          <motion.a href="#top" style={{ textDecoration: 'none' }}>
+            <Logo initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3, duration: 0.8 }} whileHover={{ scale: 1.1 }}>
+              AJSites
+            </Logo>
+          </motion.a>
+          <Nav>
+            {['Services', 'About', 'Growth', 'Contact'].map((item, index) => (
+              <NavLink
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 + index * 0.1, duration: 0.5 }}
+                whileHover={{ scale: 1.1 }}
+              >
+                {item}
+              </NavLink>
+            ))}
+          </Nav>
+          <Burger onClick={toggleMenu}>
+            <BurgerLine isOpen={isOpen} />
+            <BurgerLine isOpen={isOpen} />
+            <BurgerLine isOpen={isOpen} />
+          </Burger>
+          <MobileMenu isOpen={isOpen} initial={{ opacity: 0 }} animate={{ opacity: isOpen ? 1 : 0 }} transition={{ duration: 0.3 }}>
+            {['Services', 'About', 'Growth', 'Contact'].map((item, index) => (
+              <MobileNavLink
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                onClick={toggleMenu}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 * index, duration: 0.5 }}
+                whileHover={{ scale: 1.1 }}
+              >
+                {item}
+              </MobileNavLink>
+            ))}
+          </MobileMenu>
+        </Container>
+      </HeaderStyled>
+    </>
   );
 };
 
