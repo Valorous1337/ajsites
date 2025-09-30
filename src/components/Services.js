@@ -68,19 +68,19 @@ const ServiceText = styled.p`
 const Services = () => {
   const services = [
     {
-      title: 'AI-Powered Web Design',
+      title: 'AI-Infused Web Design',
       description: 'Bespoke, responsive websites for Somerset businesses, crafted with AI to deliver stunning designs in days, slashing costs without compromising quality.',
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      image: 'https://images.unsplash.com/photo-1522542550221-31fd19575a2d?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
     },
     {
       title: 'SEO for Organic Growth',
       description: 'Boost your Google rankings with our SEO expertise starting at £149. Comprehensive audits and strategies to drive local Somerset leads organically.',
-      image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      image: 'https://images.unsplash.com/photo-1661354132584-a2398cefa273?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
     },
     {
       title: 'Website Redesigns',
       description: 'Scalable, secure online websites. AI-driven builds ensure fast delivery for Somerset businesses, time to give your business a refreshed new look?',
-      image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      image: 'https://images.unsplash.com/photo-1720329461027-f34c265b1d91?q=80&w=2320&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
     },
   ];
 

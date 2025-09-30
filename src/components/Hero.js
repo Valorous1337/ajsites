@@ -151,7 +151,7 @@ const Hero = () => {
           animate="animate"
           transition={{ duration: 1, delay: 0.3 }}
         >
-          Sleek, AI-Powered Web Design
+          AI-Fusion Web Design in Somerset
         </HeroTitle>
         <HeroText 
           variants={fadeInUp}
